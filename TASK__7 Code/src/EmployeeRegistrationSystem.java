@@ -129,3 +129,13 @@ public class EmployeeRegistrationSystem extends JFrame {
             clearForm();
         }
     }
+
+    private void clearForm() {
+        fullNameField.setText("");
+        emailField.setText("");
+        passwordField.setText("");
+        departmentCombo.setSelectedIndex(0);
+        dobChooser.setDate(null);
+        orgTree.clearSelection();
+    }}
+
