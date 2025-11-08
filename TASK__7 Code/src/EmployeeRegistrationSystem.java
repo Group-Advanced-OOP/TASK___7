@@ -29,7 +29,7 @@ public class EmployeeRegistrationSystem extends JFrame {
         gbc.insets = new Insets(6, 6, 6, 6);
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        
+
         gbc.gridx = 0;
         gbc.gridy = 0;
         mainPanel.add(new JLabel("Full Name:"), gbc);
@@ -71,3 +71,23 @@ public class EmployeeRegistrationSystem extends JFrame {
         gbc.gridy++;
         gbc.gridwidth = 2;
         mainPanel.add(new JLabel("Organization Structure:"), gbc);
+
+        orgTree = new JTree(createOrgTree());
+        JScrollPane treeScroll = new JScrollPane(orgTree);
+        treeScroll.setPreferredSize(new Dimension(350, 150));
+        gbc.gridy++;
+        mainPanel.add(treeScroll, gbc);
+        
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JButton submitBtn = new JButton("Submit");
+        JButton clearBtn = new JButton("Clear");
+        buttonPanel.add(clearBtn);
+        buttonPanel.add(submitBtn);
+        gbc.gridy++;
+        mainPanel.add(buttonPanel, gbc);
+
+        submitBtn.addActionListener(this::handleSubmit);
+        clearBtn.addActionListener(e -> clearForm());
+
+        getContentPane().add(mainPanel, BorderLayout.CENTER);
+    }
