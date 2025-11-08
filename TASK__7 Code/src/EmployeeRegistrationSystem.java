@@ -77,7 +77,7 @@ public class EmployeeRegistrationSystem extends JFrame {
         treeScroll.setPreferredSize(new Dimension(350, 150));
         gbc.gridy++;
         mainPanel.add(treeScroll, gbc);
-        
+
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton submitBtn = new JButton("Submit");
         JButton clearBtn = new JButton("Clear");
@@ -90,4 +90,32 @@ public class EmployeeRegistrationSystem extends JFrame {
         clearBtn.addActionListener(e -> clearForm());
 
         getContentPane().add(mainPanel, BorderLayout.CENTER);
+    }
+
+    private DefaultMutableTreeNode createOrgTree() {
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Company");
+
+        DefaultMutableTreeNode itDept = new DefaultMutableTreeNode("IT");
+        itDept.add(new DefaultMutableTreeNode("Platform Team"));
+        itDept.add(new DefaultMutableTreeNode("Web Team"));
+        itDept.add(new DefaultMutableTreeNode("Support"));
+
+        DefaultMutableTreeNode financeDept = new DefaultMutableTreeNode("Finance");
+        financeDept.add(new DefaultMutableTreeNode("Accounts Payable"));
+        financeDept.add(new DefaultMutableTreeNode("Accounts Receivable"));
+
+        DefaultMutableTreeNode hrDept = new DefaultMutableTreeNode("HR");
+        hrDept.add(new DefaultMutableTreeNode("Recruitment"));
+        hrDept.add(new DefaultMutableTreeNode("Employee Relations"));
+
+        DefaultMutableTreeNode marketingDept = new DefaultMutableTreeNode("Marketing");
+        marketingDept.add(new DefaultMutableTreeNode("Content"));
+        marketingDept.add(new DefaultMutableTreeNode("SEO"));
+
+        root.add(itDept);
+        root.add(financeDept);
+        root.add(hrDept);
+        root.add(marketingDept);
+
+        return root;
     }
