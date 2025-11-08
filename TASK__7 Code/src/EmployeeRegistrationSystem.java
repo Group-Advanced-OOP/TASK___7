@@ -92,30 +92,13 @@ public class EmployeeRegistrationSystem extends JFrame {
         getContentPane().add(mainPanel, BorderLayout.CENTER);
     }
 
-    private DefaultMutableTreeNode createOrgTree() {
-        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Company");
+    private void handleSubmit(ActionEvent e) {
+        String name = fullNameField.getText().trim();
+        String email = emailField.getText().trim();
+        char[] password = passwordField.getPassword();
+        String department = (String) departmentCombo.getSelectedItem();
+        Date dob = dobChooser.getDate();
 
-        DefaultMutableTreeNode itDept = new DefaultMutableTreeNode("IT");
-        itDept.add(new DefaultMutableTreeNode("Platform Team"));
-        itDept.add(new DefaultMutableTreeNode("Web Team"));
-        itDept.add(new DefaultMutableTreeNode("Support"));
+        StringBuilder errors = new StringBuilder();
 
-        DefaultMutableTreeNode financeDept = new DefaultMutableTreeNode("Finance");
-        financeDept.add(new DefaultMutableTreeNode("Accounts Payable"));
-        financeDept.add(new DefaultMutableTreeNode("Accounts Receivable"));
-
-        DefaultMutableTreeNode hrDept = new DefaultMutableTreeNode("HR");
-        hrDept.add(new DefaultMutableTreeNode("Recruitment"));
-        hrDept.add(new DefaultMutableTreeNode("Employee Relations"));
-
-        DefaultMutableTreeNode marketingDept = new DefaultMutableTreeNode("Marketing");
-        marketingDept.add(new DefaultMutableTreeNode("Content"));
-        marketingDept.add(new DefaultMutableTreeNode("SEO"));
-
-        root.add(itDept);
-        root.add(financeDept);
-        root.add(hrDept);
-        root.add(marketingDept);
-
-        return root;
-    }
+        
