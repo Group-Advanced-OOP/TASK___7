@@ -29,3 +29,45 @@ public class EmployeeRegistrationSystem extends JFrame {
         gbc.insets = new Insets(6, 6, 6, 6);
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
+        
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        mainPanel.add(new JLabel("Full Name:"), gbc);
+        fullNameField = new JTextField(20);
+        gbc.gridx = 1;
+        mainPanel.add(fullNameField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy++;
+        mainPanel.add(new JLabel("Email Address:"), gbc);
+        emailField = new JTextField(20);
+        gbc.gridx = 1;
+        mainPanel.add(emailField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy++;
+        mainPanel.add(new JLabel("Password:"), gbc);
+        passwordField = new JPasswordField(20);
+        gbc.gridx = 1;
+        mainPanel.add(passwordField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy++;
+        mainPanel.add(new JLabel("Department:"), gbc);
+        departmentCombo = new JComboBox<>(new String[]{"-- Select --", "IT", "Finance", "HR", "Marketing"});
+        gbc.gridx = 1;
+        mainPanel.add(departmentCombo, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy++;
+        mainPanel.add(new JLabel("Date of Birth:"), gbc);
+        dobChooser = new JDateChooser();
+        dobChooser.setDateFormatString("yyyy-MM-dd");
+        dobChooser.setPreferredSize(new Dimension(200, dobChooser.getPreferredSize().height));
+        gbc.gridx = 1;
+        mainPanel.add(dobChooser, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.gridwidth = 2;
+        mainPanel.add(new JLabel("Organization Structure:"), gbc);
