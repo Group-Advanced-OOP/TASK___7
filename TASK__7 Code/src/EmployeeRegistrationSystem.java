@@ -101,4 +101,31 @@ public class EmployeeRegistrationSystem extends JFrame {
 
         StringBuilder errors = new StringBuilder();
 
-        
+        if (name.isEmpty()) errors.append("- Full Name cannot be empty.\n");
+        if (email.isEmpty()) errors.append("- Email Address cannot be empty.\n");
+        else if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) errors.append("- Invalid Email Address.\n");
+        if (password.length == 0) errors.append("- Password cannot be empty.\n");
+        if (department == null || department.equals("-- Select --")) errors.append("- Please select a Department.\n");
+        if (dob == null) errors.append("- Please choose a Date of Birth.\n");
+
+        if (errors.length() > 0) {
+            JOptionPane.showMessageDialog(this, "Please fix the following errors:\n" + errors, "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Object selectedNode = orgTree.getLastSelectedPathComponent();
+        String orgSelection = (selectedNode != null) ? selectedNode.toString() : "None selected";
+
+        String dobStr = new SimpleDateFormat("yyyy-MM-dd").format(dob);
+        String summary = String.format(
+                "Please confirm the entered details:\n\n" +
+                        "Full Name: %s\nEmail: %s\nPassword: ******\nDepartment: %s\nDate of Birth: %s\nOrganization Node: %s",
+                name, email, department, dobStr, orgSelection
+        );
+
+        int choice = JOptionPane.showConfirmDialog(this, summary, "Confirm Registration", JOptionPane.OK_CANCEL_OPTION);
+        if (choice == JOptionPane.OK_OPTION) {
+            JOptionPane.showMessageDialog(this, "Registration successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            clearForm();
+        }
+    }
