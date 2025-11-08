@@ -5,3 +5,6 @@ public class Main {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ignored) {}
+        SwingUtilities.invokeLater(() -> new EmployeeRegistrationSystem().setVisible(true));
+    }
+}
